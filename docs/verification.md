@@ -46,6 +46,8 @@ JavaはJDK17以上を用意してください。decodeスクリプトの初回�
 
 ZXing-C++のstrict検証は706matrixと750個の実PNG（default scale8）、97805184画素を確認します。135SAheader、152種類のFNC1-second indicatorのmanual/options両経路304symbol、5つのSAset/44symbolを含み、両decode経路でVersion 1–40を実行します。PNGの全RGBA画素、quiet zone、PNG CRC、zlib decodeを確認してからscannerへ渡します。matrixからのtest rasterと生成された実PNGは別に数えます。
 
+最初の公開コミット `a9a73c260eabae90a0a03b33f1dd634c3ea3c7dd` の [独立検証CI](https://github.com/SpecQR/SpecQR-CPP/actions/runs/37123663410/job/111204575993) では、上記exact比較とZXing-C++検証が成功しました。ZXing Javaは446matrix・446個のscale3実PNG、10008270画素を検証し、32symbolで各3個のdata codeword誤りを訂正しました。両decode経路でVersion 1–40を実行し、135SAheaderと5set/44symbolから10回の独立再結合を検証しています。[Javaの実測report](evidence/zxing-java-ci.json) はcommit・run/job URL・adapter hashを含みます。raw decoder出力は926件で、strict成功924件と別枠のscale8検出失敗2件を独立に照合しました。
+
 ### ECIのdecoder API差分
 
 初回のZXing-C++検証では35個のECIケース×2経路の計70件が、`symbology_identifier`へ `]Q2` を期待したため失敗しました。デコードされた全bytesは一致し、検出失敗ではありません。この最初の失敗を別reportに保存します。
@@ -54,7 +56,9 @@ ZXing-C++のstrict検証は706matrixと750個の実PNG（default scale8）、978
 
 ### Javaのdefault scale8診断
 
-Javaのstrict実PNG検出はscale3で、`PURE_BARCODE`やmatrixへのfallbackを使いません。別にdefault scale8の特定画像と同じ画素の独立PNGを生成し、両方の結果を保存します。そこでの検出拒否はstrict成功へ含めません。PNGファイルとJSONはCI artifactに保持し、異なる結果になった場合はgateを失敗させます。同一画素のcontrolにも現れるdecoderの検出制限と、encoderの誤りを区別します。
+Javaのstrict実PNG検出はscale3で、`PURE_BARCODE`やmatrixへのfallbackを使いません。別にdefault scale8の特定画像と同じ画素の独立PNGを生成し、両方の結果を保存します。そこでの検出拒否はstrict成功へ含めません。PNGファイルとJSONはCI artifactに保持し、異なる結果になった場合はgateを失敗させます。同一画素のcontrolにも現れるdecoderの検出制限と、encoderの誤りを区別します。 実際の上記CIでは `SPECQR / 12345 %`、Version 4/L/mask 0、scale8のC++ PNGと、全画素一致を確認した独立grayscale controlがともに `NotFoundException` となりました（検出失敗2・成功0）。同じC++ PNGをZXing-C++は正しいpayloadとして読み取りました。このJavaの2失敗は446件のstrict PNG成功に含めていません。
+
+[実行済みJava CI証跡](evidence/zxing-java-ci.json) では446matrix、446実PNG、32個の破損symbol（各3codewordの訂正）が成功しました。全40version、135SAheader、5set/44symbol、両経路10回の独立結合、10008270画素を検証しています。default scale8の本体PNGと独立controlは両方 `NotFoundException`（失敗2、成功0）であり、924個のstrict成功に含めていません。同じdefault PNGはZXing-C++で完全なpayloadが読めました。初回CIでWindows CLIのLF/CRLF差分も検出し、stdoutをbinary modeに修正しています。libraryの16source/headerのhashは変えていません。
 
 ## 実行結果と限界
 

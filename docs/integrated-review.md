@@ -75,3 +75,11 @@ GF(256)、RS、interleaving、function/data module 配置、mask scoring、count
 別担当の exact differential / Nayuki / decoder evidence と、初回 ECI decoder-property mismatch の保存方針を確認しましたが、その外部 executable をこの reviewer 自身が実行したとは数えません。これらの実測、Java の scale-8 control 診断、最終 GitHub CI と fresh remote clone は [verification](verification.md) と公開担当の証跡を参照してください。
 
 この reviewer は Windows/Linux の実行、ThreadSanitizer、Java decoder、物理カメラ・印刷試験を実行していません。特に Windows `wmain` と MSVC/shared-library 分岐は実 CI 成功を確認してから公開作業を完了する必要があります。本レビューは指定 snapshot の有限の検査結果であり、将来の変更や全入力に対する無欠陥の証明ではありません。
+
+## 公開後 CI の修正レビュー
+
+[初回 CI の Windows Debug job](https://github.com/SpecQR/SpecQR-CPP/actions/runs/37123663410/job/111204576249) は native tests 5/5 に成功した後、`verify-cli.py` の Unicode file 出力と stdout のバイト比較で失敗しました。レビュアーも実際の job log の成功・失敗箇所を確認しました。Windows CRT の stdout が text mode のため LF を CRLF に変換し、binary mode で保存した file の LF と一致しなかったものです。比較条件は緩めていません。
+
+修正は `wmain` の出力前に `_setmode(_fileno(stdout), _O_BINARY)` を呼び、設定失敗を検査する 3 行です。レビュアーはこの差分と呼び出し順を確認し、修正の適用を承認しました。macOS の CLI 29 checks は再実行して成功しています。**この追記時点では、修正後の Windows CI 再実行は未確認です。** 実際の再実行成功を公開作業の完了条件に残します。
+
+上記の 30-file manifest は公開前の履歴をそのまま保持します。比較した変更は `cli/main.cpp` のみで、runtime / public header の 16 ファイルは同一です。修正後の CLI の SHA-256 は `75b96aadd7250e74223c256dd2c81b68db8c4ed966813d0a3886272d9fee2925` です。ローカルの raw job log や個人パスは公開資料へ転載していません。

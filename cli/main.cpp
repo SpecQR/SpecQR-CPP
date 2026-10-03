@@ -186,6 +186,9 @@ std::string utf8_argument(const wchar_t* argument) {
 }
 int wmain(int argc, wchar_t** argv) {
     try {
+        // Match binary file output byte-for-byte, including LF line endings.
+        if (_setmode(_fileno(stdout), _O_BINARY) == -1)
+            throw specqr::Error("IO_ERROR", "Could not set binary standard output.");
         std::vector<std::string> values;
         values.reserve(static_cast<std::size_t>(argc));
         for (int i=0; i<argc; ++i) values.push_back(utf8_argument(argv[i]));
