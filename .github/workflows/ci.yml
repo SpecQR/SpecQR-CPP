@@ -1,0 +1,113 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    name: ${{ matrix.os }} / ${{ matrix.compiler }} / ${{ matrix.config }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-24.04, compiler: GCC, cxx: g++, config: Debug }
+          - { os: ubuntu-24.04, compiler: GCC, cxx: g++, config: Release }
+          - { os: ubuntu-24.04, compiler: Clang, cxx: clang++, config: Debug }
+          - { os: ubuntu-24.04, compiler: Clang, cxx: clang++, config: Release }
+          - { os: macos-14, compiler: AppleClang, cxx: clang++, config: Debug }
+          - { os: macos-14, compiler: AppleClang, cxx: clang++, config: Release }
+          - { os: windows-2022, compiler: MSVC, cxx: cl, config: Debug }
+          - { os: windows-2022, compiler: MSVC, cxx: cl, config: Release }
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_CXX_COMPILER=${{ matrix.cxx }}
+      - name: Build
+        run: cmake --build build --config ${{ matrix.config }} --parallel 3
+      - name: Test
+        run: ctest --test-dir build -C ${{ matrix.config }} --output-on-failure
+      - name: CLI on Unix
+        if: runner.os != 'Windows'
+        run: python tools/verify-cli.py --cli build/specqr-cli
+      - name: CLI on Windows
+        if: runner.os == 'Windows'
+        run: python tools/verify-cli.py --cli build/${{ matrix.config }}/specqr-cli.exe
+      - name: Set downstream compiler on Unix
+        if: runner.os != 'Windows'
+        run: echo "CXX=${{ matrix.cxx }}" >> "$GITHUB_ENV"
+      - name: Public and dependency audit
+        if: matrix.os == 'ubuntu-24.04' && matrix.compiler == 'GCC' && matrix.config == 'Release'
+        run: python tools/audit-public.py
+      - name: Clean installed static consumer
+        run: python tools/verify-consumer.py --config ${{ matrix.config }}
+      - name: Clean installed shared consumer
+        if: matrix.config == 'Release'
+        run: python tools/verify-consumer.py --config ${{ matrix.config }} --shared
+  sanitizers:
+    name: ${{ matrix.sanitizer }} / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-24.04, sanitizer: address-undefined }
+          - { os: macos-14, sanitizer: thread }
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    env:
+      ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+      UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+      TSAN_OPTIONS: halt_on_error=1
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=clang++ -DSPECQR_SANITIZER=${{ matrix.sanitizer }}
+      - run: cmake --build build --parallel 3
+      - run: ctest --test-dir build --output-on-failure
+  independent-conformance:
+    name: Exact matrices + independent decoders
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tools/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install test-only oracle
+        run: npm ci --prefix tools --ignore-scripts
+      - name: Fetch pinned owner baseline
+        run: |
+          git clone https://github.com/SpecQR/SpecQR.git baseline
+          git -C baseline checkout 15ad15e5c770ea0e39072f8f88b2733018f02ffd
+      - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build build --parallel 3
+      - name: Exact public and internal matrix/data/ECC checks
+        run: python tools/verify-conformance.py --adapter build/specqr-conformance --baseline baseline
+      - name: ZXing-C++ default-scale PNG and FNC1-second
+        run: python tools/verify-decode.py --adapter build/specqr-conformance --decoder cpp --dependency-dir .tools/zxing-cpp
+      - name: ZXing Java strict detection and correction
+        run: python tools/verify-decode.py --adapter build/specqr-conformance --decoder java --dependency-dir .tools/zxing-java
+      - name: Retain conformance and decoder evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conformance-evidence
+          path: |
+            artifacts/*.json
+            artifacts/zxing-java-fixtures/decoded.jsonl
+            artifacts/zxing-java-fixtures/cpp-default-scale8.png
+            artifacts/zxing-java-fixtures/independent-default-scale8.png
+          if-no-files-found: warn

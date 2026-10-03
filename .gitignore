@@ -1,0 +1,10 @@
+/build*/
+/install*/
+/artifacts/
+node_modules/
+/.tools/
+__pycache__/
+*.pyc
+*.png
+*.svg
+.DS_Store

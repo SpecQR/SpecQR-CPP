@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "date": "2026-10-03",
+  "compiler": "Apple Clang 21.0.0 arm64 macOS",
+  "standard": "C++17",
+  "nativeSuites": {
+    "Debug": {
+      "tests": 5,
+      "failures": 0,
+      "skipped": 0,
+      "unitChecks": 3855,
+      "gs1Assertions": 14074,
+      "extensionChecks": 820,
+      "coreEdgeAssertions": 1247996,
+      "reviewAssertions": 8139
+    },
+    "Release": {
+      "tests": 5,
+      "failures": 0,
+      "skipped": 0,
+      "unitChecks": 3855,
+      "gs1Assertions": 14074,
+      "extensionChecks": 820,
+      "coreEdgeAssertions": 1247996,
+      "reviewAssertions": 8139
+    },
+    "ASan-UBSan": {
+      "tests": 5,
+      "failures": 0,
+      "skipped": 0,
+      "unitChecks": 3855,
+      "gs1Assertions": 14074,
+      "extensionChecks": 820,
+      "coreEdgeAssertions": 1247996,
+      "reviewAssertions": 8139
+    },
+    "TSan": {
+      "tests": 5,
+      "failures": 0,
+      "skipped": 0,
+      "unitChecks": 3855,
+      "gs1Assertions": 14074,
+      "extensionChecks": 820,
+      "coreEdgeAssertions": 1247996,
+      "reviewAssertions": 8139
+    }
+  },
+  "cliChecks": 29,
+  "limits": [
+    "macOS AddressSanitizer leak detection disabled; Linux CI enables leak detection.",
+    "No physical print/camera validation.",
+    "No ABI or full GS1 certification claim.",
+    "Windows Unicode CLI entrypoint awaits required Windows CI execution."
+  ],
+  "sourceSha256": {
+    "src/core.cpp": "a2a786456c0fc9ee518d2b99e02784b5d6be239f250915a09eae903ce3920557",
+    "src/gs1.cpp": "810af1b79050bf65c90313a8d256222f82219b4accdda378092bc6b950dd04ea",
+    "src/internal.hpp": "82decec748aa40706c99f7e4bb58db33d4ed4b7304241a8bdca30cc21919623a",
+    "src/kanji_map.inc": "b6d36efcffd8f56c792d7a20dc58d9af534b69fced3b4db0e6735428c9028f21",
+    "src/matrix.cpp": "1fa4e5b87e349a0f3e24542a500e47cf2e3e8bf2c32569e59d440c4475d4233e",
+    "src/render.cpp": "f8a10bcd0c0dc178f28d82954c94f8b030fcbeace52902e5a0e309571c26f6cb",
+    "src/render_internal.hpp": "f86baff96cd1d3763209f70b9fbaccd88dc21e27a127e1f28694ead846fa0448",
+    "src/scan.cpp": "3d385f8b1a4fe32af5dd265210731e0f837df9592bfb49330e68dd62723b7769",
+    "src/segments.cpp": "a1011adda9a721381367d39ec1c05c7e0477ff9bf1c1c8c1ded57ffded8ddd48",
+    "src/structured_append.cpp": "b2256208bce8b511d7689a43b6983bcb23f8b617f71310bc7258e9e29349ad8b",
+    "src/tables.cpp": "76eb509071291cb65c0c35b987e8961e9a5942939561a0bb5afa422129130e11",
+    "include/specqr/gs1.hpp": "0486e910c45d29b847e0bf49b64b25cc998b15ebecb09011bb40afdc691388ac",
+    "include/specqr/render.hpp": "ef491cce8e4c83a328ef4ae78c122320d65f58e1d5098b6a29f45cbd9f3ccecb",
+    "include/specqr/scan.hpp": "5add385648f77fad1b8719a8ee2161852290499b977f4d57a3ca299c9f3b2d40",
+    "include/specqr/specqr.hpp": "452964cf81038bc75f55cecbdf0f6d7b7af516e71800798399b764137311d49a",
+    "include/specqr/structured_append.hpp": "24e5fee414927e99a99b0eb31b0c13304d737e9b8a4141c00ea4a9e83b7d11bd"
+  }
+}

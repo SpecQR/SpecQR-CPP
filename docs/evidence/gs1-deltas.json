@@ -1,0 +1,1255 @@
+{
+  "format_version": 1,
+  "upstream_repository": "https://github.com/SpecQR/SpecQR",
+  "upstream_commit": "15ad15e5c770ea0e39072f8f88b2733018f02ffd",
+  "source_fixture": "SpecQR-CSharp/tests/SpecQR.Tests/Fixtures/gs1-upstream.json",
+  "fixture_count": 1411,
+  "unchanged_outcome_count": 1369,
+  "intentional_difference_count": 42,
+  "accepted_to_rejected_count": 34,
+  "diagnostic_only_count": 8,
+  "comparison_contract": "Success values, catalog metadata, parsed arrays, validation status and diagnostic codes are compared. Diagnostic English text and UTF-16 offset identity are not promised; C++ offsets are UTF-8 bytes. Throwing APIs expose Error.code() == INVALID_GS1; cpp_validation_category names the internal validation category. No fixture is skipped.",
+  "differences": [
+    {
+      "case_id": 867,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_INVALID_INPUT",
+            "message": "GS1 Digital Link path must include primary AI 00, 01, or 414",
+            "reason": "malformed-path",
+            "expected": "Digital Link path containing primary AI and AI/value pairs"
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904/10/%FF",
+      "options": {
+        "primaryAi": "00"
+      }
+    },
+    {
+      "case_id": 874,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_INVALID_CHARSET",
+            "message": "GS1 AI 10 value must use printable ASCII characters",
+            "ai": "10",
+            "reason": "invalid-charset",
+            "expected": "printable ASCII"
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?10=%FF"
+    },
+    {
+      "case_id": 875,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_INVALID_CHARSET",
+            "message": "GS1 AI 10 value must use printable ASCII characters",
+            "ai": "10",
+            "reason": "invalid-charset",
+            "expected": "printable ASCII"
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?10=%FF",
+      "options": {
+        "unknownQuery": "reject"
+      }
+    },
+    {
+      "case_id": 876,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_INVALID_INPUT",
+            "message": "GS1 Digital Link path must include primary AI 00, 01, or 414",
+            "reason": "malformed-path",
+            "expected": "Digital Link path containing primary AI and AI/value pairs"
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?10=%FF",
+      "options": {
+        "primaryAi": "00"
+      }
+    },
+    {
+      "case_id": 880,
+      "operation": "linkParse",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": [
+          {
+            "key": "foo",
+            "value": "�"
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%FF"
+    },
+    {
+      "case_id": 883,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": [
+            {
+              "key": "foo",
+              "value": "�"
+            }
+          ]
+        },
+        "warnings": [
+          {
+            "code": "GS1_DIGITAL_LINK_UNKNOWN_QUERY_PRESERVED",
+            "message": "GS1 Digital Link URI contains non-GS1 query parameters preserved in unknownQuery.",
+            "reason": "unknown-query-preserved",
+            "count": 1
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?foo=%FF"
+    },
+    {
+      "case_id": 884,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_DIGITAL_LINK_UNKNOWN_QUERY",
+            "message": "GS1 Digital Link query parameter \"foo\" is not a GS1 AI",
+            "key": "foo",
+            "reason": "unknown-query",
+            "expected": "GS1 AI query parameter or unknownQuery: \"preserve\""
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?foo=%FF",
+      "options": {
+        "unknownQuery": "reject"
+      }
+    },
+    {
+      "case_id": 885,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_INVALID_INPUT",
+            "message": "GS1 Digital Link path must include primary AI 00, 01, or 414",
+            "reason": "malformed-path",
+            "expected": "Digital Link path containing primary AI and AI/value pairs"
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?foo=%FF",
+      "options": {
+        "primaryAi": "00"
+      }
+    },
+    {
+      "case_id": 886,
+      "operation": "linkNormalize",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/01/04912345678904?foo=%EF%BF%BD",
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%FF"
+    },
+    {
+      "case_id": 889,
+      "operation": "linkParse",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": [
+          {
+            "key": "foo",
+            "value": "%"
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%"
+    },
+    {
+      "case_id": 1060,
+      "operation": "linkParse",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://é.com/01/04912345678904"
+    },
+    {
+      "case_id": 1061,
+      "operation": "linkParse",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://é.com/01/04912345678904",
+      "options": {
+        "unknownQuery": "reject"
+      }
+    },
+    {
+      "case_id": 1063,
+      "operation": "linkValidate",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": []
+        },
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "GS1_DIGITAL_LINK_INVALID_URI",
+      "input": "https://é.com/01/04912345678904"
+    },
+    {
+      "case_id": 1064,
+      "operation": "linkValidate",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": []
+        },
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "GS1_DIGITAL_LINK_INVALID_URI",
+      "input": "https://é.com/01/04912345678904",
+      "options": {
+        "unknownQuery": "reject"
+      }
+    },
+    {
+      "case_id": 1065,
+      "operation": "linkValidate",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_INVALID_INPUT",
+            "message": "GS1 Digital Link path must include primary AI 00, 01, or 414",
+            "reason": "malformed-path",
+            "expected": "Digital Link path containing primary AI and AI/value pairs"
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "GS1_DIGITAL_LINK_INVALID_URI",
+      "input": "https://é.com/01/04912345678904",
+      "options": {
+        "primaryAi": "00"
+      }
+    },
+    {
+      "case_id": 1066,
+      "operation": "linkNormalize",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://xn--9ca.com/01/04912345678904",
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://é.com/01/04912345678904"
+    },
+    {
+      "case_id": 1067,
+      "operation": "linkNormalize",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://xn--9ca.com/01/04912345678904",
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://é.com/01/04912345678904",
+      "options": {
+        "unknownQuery": "reject"
+      }
+    },
+    {
+      "case_id": 1155,
+      "operation": "linkCreate",
+      "category": "preserve-gs1-dot-payload",
+      "reason": "Literal or percent-encoded dot-only GS1 path values are rejected before URL normalization can remove them. Put qualifier values in the query with an explicit empty path_ais list; prefix/base dot segments still normalize.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/stem/01/04912345678904/10/",
+      "cpp_validation_category": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "cpp_error_code": "INVALID_GS1",
+      "elements": [
+        {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        {
+          "ai": "10",
+          "value": "."
+        }
+      ],
+      "options": {
+        "baseUrl": "https://example.com/stem"
+      }
+    },
+    {
+      "case_id": 1157,
+      "operation": "linkCreate",
+      "category": "preserve-gs1-dot-payload",
+      "reason": "Literal or percent-encoded dot-only GS1 path values are rejected before URL normalization can remove them. Put qualifier values in the query with an explicit empty path_ais list; prefix/base dot segments still normalize.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/stem/01/04912345678904/",
+      "cpp_validation_category": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "cpp_error_code": "INVALID_GS1",
+      "elements": [
+        {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        {
+          "ai": "10",
+          "value": ".."
+        }
+      ],
+      "options": {
+        "baseUrl": "https://example.com/stem"
+      }
+    },
+    {
+      "case_id": 1205,
+      "operation": "linkParse",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://例え.テスト/01/04912345678904"
+    },
+    {
+      "case_id": 1206,
+      "operation": "linkValidate",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": []
+        },
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "GS1_DIGITAL_LINK_INVALID_URI",
+      "input": "https://例え.テスト/01/04912345678904"
+    },
+    {
+      "case_id": 1207,
+      "operation": "linkNormalize",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://xn--r8jz45g.xn--zckzah/01/04912345678904",
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://例え.テスト/01/04912345678904"
+    },
+    {
+      "case_id": 1265,
+      "operation": "linkParse",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://１２７.１/01/04912345678904"
+    },
+    {
+      "case_id": 1266,
+      "operation": "linkValidate",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": []
+        },
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "GS1_DIGITAL_LINK_INVALID_URI",
+      "input": "https://１２７.１/01/04912345678904"
+    },
+    {
+      "case_id": 1267,
+      "operation": "linkNormalize",
+      "category": "idna-host-preconversion",
+      "reason": "Unicode hostname IDNA/UTS46 mapping is not implemented in the standard-library-only URL helper. Supply an IDNA ASCII/punycode hostname. This limitation does not apply to Unicode QR text or valid UTF-8 unknown query data.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://127.0.0.1/01/04912345678904",
+      "cpp_validation_category": "GS1_DIGITAL_LINK_INVALID_URI",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://１２７.１/01/04912345678904"
+    },
+    {
+      "case_id": 1319,
+      "operation": "linkParse",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": [
+          {
+            "key": "foo",
+            "value": "�(�("
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%F0%28%8C%28"
+    },
+    {
+      "case_id": 1320,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": [
+            {
+              "key": "foo",
+              "value": "�(�("
+            }
+          ]
+        },
+        "warnings": [
+          {
+            "code": "GS1_DIGITAL_LINK_UNKNOWN_QUERY_PRESERVED",
+            "message": "GS1 Digital Link URI contains non-GS1 query parameters preserved in unknownQuery.",
+            "reason": "unknown-query-preserved",
+            "count": 1
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?foo=%F0%28%8C%28"
+    },
+    {
+      "case_id": 1321,
+      "operation": "linkNormalize",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/01/04912345678904?foo=%EF%BF%BD%28%EF%BF%BD%28",
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%F0%28%8C%28"
+    },
+    {
+      "case_id": 1322,
+      "operation": "linkParse",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": [
+          {
+            "key": "foo",
+            "value": "��"
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%C0%AF"
+    },
+    {
+      "case_id": 1323,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": [
+            {
+              "key": "foo",
+              "value": "��"
+            }
+          ]
+        },
+        "warnings": [
+          {
+            "code": "GS1_DIGITAL_LINK_UNKNOWN_QUERY_PRESERVED",
+            "message": "GS1 Digital Link URI contains non-GS1 query parameters preserved in unknownQuery.",
+            "reason": "unknown-query-preserved",
+            "count": 1
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?foo=%C0%AF"
+    },
+    {
+      "case_id": 1324,
+      "operation": "linkNormalize",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/01/04912345678904?foo=%EF%BF%BD%EF%BF%BD",
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%C0%AF"
+    },
+    {
+      "case_id": 1325,
+      "operation": "linkParse",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": [
+          {
+            "key": "foo",
+            "value": "���"
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%ED%A0%80"
+    },
+    {
+      "case_id": 1326,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": [
+            {
+              "key": "foo",
+              "value": "���"
+            }
+          ]
+        },
+        "warnings": [
+          {
+            "code": "GS1_DIGITAL_LINK_UNKNOWN_QUERY_PRESERVED",
+            "message": "GS1 Digital Link URI contains non-GS1 query parameters preserved in unknownQuery.",
+            "reason": "unknown-query-preserved",
+            "count": 1
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?foo=%ED%A0%80"
+    },
+    {
+      "case_id": 1327,
+      "operation": "linkNormalize",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/01/04912345678904?foo=%EF%BF%BD%EF%BF%BD%EF%BF%BD",
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%ED%A0%80"
+    },
+    {
+      "case_id": 1334,
+      "operation": "linkParse",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": [
+          {
+            "key": "foo",
+            "value": "�"
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%E2%82"
+    },
+    {
+      "case_id": 1335,
+      "operation": "linkValidate",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": [
+            {
+              "key": "foo",
+              "value": "�"
+            }
+          ]
+        },
+        "warnings": [
+          {
+            "code": "GS1_DIGITAL_LINK_UNKNOWN_QUERY_PRESERVED",
+            "message": "GS1 Digital Link URI contains non-GS1 query parameters preserved in unknownQuery.",
+            "reason": "unknown-query-preserved",
+            "count": 1
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "GS1_INVALID_PERCENT_ENCODING",
+      "input": "https://example.com/01/04912345678904?foo=%E2%82"
+    },
+    {
+      "case_id": 1336,
+      "operation": "linkNormalize",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/01/04912345678904?foo=%EF%BF%BD",
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%E2%82"
+    },
+    {
+      "case_id": 1352,
+      "operation": "linkParse",
+      "category": "strict-percent-utf8",
+      "reason": "Malformed percent escapes or invalid Unicode scalar UTF-8 are rejected without replacement in all path/query fields, including unknown query data. This validation precedes unknown-query and selected-primary handling.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": [
+          {
+            "key": "foo",
+            "value": "%"
+          }
+        ]
+      },
+      "cpp_validation_category": "GS1_INVALID_PERCENT_ENCODING",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904?foo=%"
+    },
+    {
+      "case_id": 1374,
+      "operation": "linkValidate",
+      "category": "preserve-gs1-dot-payload",
+      "reason": "Literal or percent-encoded dot-only GS1 path values are rejected before URL normalization can remove them. Put qualifier values in the query with an explicit empty path_ais list; prefix/base dot segments still normalize.",
+      "change": "diagnostic-only",
+      "baseline_accepted": false,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "GS1_INVALID_INPUT",
+            "message": "GS1 Digital Link path must contain AI/value pairs",
+            "reason": "malformed-path",
+            "expected": "Digital Link path containing primary AI and AI/value pairs"
+          }
+        ],
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "cpp_error_code": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "input": "https://example.com/01/04912345678904/10/%2e"
+    },
+    {
+      "case_id": 1376,
+      "operation": "linkParse",
+      "category": "preserve-gs1-dot-payload",
+      "reason": "Literal or percent-encoded dot-only GS1 path values are rejected before URL normalization can remove them. Put qualifier values in the query with an explicit empty path_ais list; prefix/base dot segments still normalize.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "elements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "primary": {
+          "ai": "01",
+          "value": "04912345678904"
+        },
+        "pathElements": [
+          {
+            "ai": "01",
+            "value": "04912345678904"
+          }
+        ],
+        "queryElements": [],
+        "unknownQuery": []
+      },
+      "cpp_validation_category": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904/10/%2E%2e"
+    },
+    {
+      "case_id": 1377,
+      "operation": "linkValidate",
+      "category": "preserve-gs1-dot-payload",
+      "reason": "Literal or percent-encoded dot-only GS1 path values are rejected before URL normalization can remove them. Put qualifier values in the query with an explicit empty path_ais list; prefix/base dot segments still normalize.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": {
+        "ok": true,
+        "result": {
+          "elements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "primary": {
+            "ai": "01",
+            "value": "04912345678904"
+          },
+          "pathElements": [
+            {
+              "ai": "01",
+              "value": "04912345678904"
+            }
+          ],
+          "queryElements": [],
+          "unknownQuery": []
+        },
+        "warnings": []
+      },
+      "cpp_validation_category": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "cpp_error_code": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "input": "https://example.com/01/04912345678904/10/%2E%2e"
+    },
+    {
+      "case_id": 1378,
+      "operation": "linkNormalize",
+      "category": "preserve-gs1-dot-payload",
+      "reason": "Literal or percent-encoded dot-only GS1 path values are rejected before URL normalization can remove them. Put qualifier values in the query with an explicit empty path_ais list; prefix/base dot segments still normalize.",
+      "change": "accepted-to-rejected",
+      "baseline_accepted": true,
+      "cpp_accepted": false,
+      "baseline_expected": "https://example.com/01/04912345678904",
+      "cpp_validation_category": "GS1_INVALID_DIGITAL_LINK_PLACEMENT",
+      "cpp_error_code": "INVALID_GS1",
+      "input": "https://example.com/01/04912345678904/10/%2E%2e"
+    }
+  ]
+}

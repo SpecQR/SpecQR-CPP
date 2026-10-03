@@ -1,0 +1,743 @@
+{
+  "purpose": "Preserved initial diagnostic: the harness incorrectly expected the Java ECI identifier property behavior from ZXing-C++. This report is not counted as a successful run. Final checks assert both the base property and independently verified ECI text mode; see zxing-cpp-eci-controls.json and zxing-cpp-local.json.",
+  "originalReport": {
+    "status": "failed",
+    "decoder": "ZXing-C++ 3.1.1",
+    "requirementsSha256": "c44d88445ebed50625951b7289af9b4acbf5aece869e6aafd03f9aba7bc99429",
+    "adapterSha256": "c6a8ed8d28a2293431ca5466c20e97bff9cb6927a1bc48dbc967f68ba81ec4c9",
+    "counts": {
+      "matrixDecodes": 631,
+      "pngDecodes": 675,
+      "verifiedRgbaPixels": 63037824,
+      "structuredAppendHeaders": 135,
+      "fnc1SecondSymbols": 304,
+      "damagedSymbolsCorrected": 0,
+      "highLevelSets": 5,
+      "highLevelSymbols": 44,
+      "independentReconstructions": 5
+    },
+    "strictSymbols": 666,
+    "pngScale": 8,
+    "pureBarcodeHint": false,
+    "defaultScaleDiagnostic": {
+      "case": "alphanumeric-L-0",
+      "scale": 8,
+      "quietZone": 4,
+      "allPixelsMatch": true,
+      "cppPngSha256": "fd902211dbe0d4706772b64e7f1949a5e0e71863dbb3feac46b83113204d4f84",
+      "controlPngSha256": "73dbb0619cf0e1f4a89fe94693c7813febf49fc87cc688db84a1b978146a31b0",
+      "matrixSha256": "afe9eb218390955d8742719b98b5c4735171fe3248b393f77a64437f3c1c6047",
+      "countedAsStrictSuccess": false,
+      "exactPayloadDecoded": true,
+      "detectionFailures": 0,
+      "detectionSuccesses": 1
+    },
+    "failures": [
+      {
+        "case": "utf8-L-0",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-0",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-1",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-1",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-2",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-2",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-3",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-3",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-4",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-4",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-5",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-5",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-6",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-6",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-7",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-L-7",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "L"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-0",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-0",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-1",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-1",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-2",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-2",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-3",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-3",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-4",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-4",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-5",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-5",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-6",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-6",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-7",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-M-7",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-0",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-0",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-1",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-1",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-2",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-2",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-3",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-3",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-4",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-4",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-5",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-5",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-6",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-6",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-7",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-Q-7",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "Q"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-0",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-0",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-1",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-1",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-2",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-2",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-3",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-3",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-4",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-4",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-5",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-5",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-6",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-6",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-7",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "utf8-H-7",
+        "route": "png",
+        "decoded": {
+          "bytes": "65cc81f09f9982e6bca2e5ad9720636166c3a9",
+          "identifier": "]Q1",
+          "ecc": "H"
+        },
+        "expectedHex": "65cc81f09f9982e6bca2e5ad9720636166c3a9"
+      },
+      {
+        "case": "eci-3",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "636166e9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "636166e9"
+      },
+      {
+        "case": "eci-3",
+        "route": "png",
+        "decoded": {
+          "bytes": "636166e9",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "636166e9"
+      },
+      {
+        "case": "eci-20",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "8abf8e9a",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "8abf8e9a"
+      },
+      {
+        "case": "eci-20",
+        "route": "png",
+        "decoded": {
+          "bytes": "8abf8e9a",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "8abf8e9a"
+      },
+      {
+        "case": "eci-170",
+        "route": "matrix",
+        "decoded": {
+          "bytes": "4153434949",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "4153434949"
+      },
+      {
+        "case": "eci-170",
+        "route": "png",
+        "decoded": {
+          "bytes": "4153434949",
+          "identifier": "]Q1",
+          "ecc": "M"
+        },
+        "expectedHex": "4153434949"
+      }
+    ],
+    "elapsedSeconds": 7.583,
+    "limitations": [
+      "Synthetic PNG detection is not camera/print certification.",
+      "Java excludes FNC1-second; ZXing-C++ tests all 162 indicators."
+    ]
+  }
+}

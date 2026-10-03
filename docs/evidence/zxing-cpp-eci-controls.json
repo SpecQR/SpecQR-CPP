@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "source": "nayuki-qr-code-generator@1.8.0",
+      "assignment": 3,
+      "matrixSha256": "d7c143da31baf2c5d6292a83366c552c168155877441a7e4196eaacfafe41c14",
+      "cppMatrixIdentical": true,
+      "decodedBytesHex": "636166e9",
+      "plainIdentifier": "]Q1",
+      "eciIdentifierProperty": "]Q1",
+      "eciText": "]Q2\\000026café"
+    },
+    {
+      "source": "nayuki-qr-code-generator@1.8.0",
+      "assignment": 20,
+      "matrixSha256": "2382a208f7b45a02aa1fe9e237116e5d27d2118922b6d76d75f594adf8d81f3d",
+      "cppMatrixIdentical": true,
+      "decodedBytesHex": "8abf8e9a",
+      "plainIdentifier": "]Q1",
+      "eciIdentifierProperty": "]Q1",
+      "eciText": "]Q2\\000026漢字"
+    },
+    {
+      "source": "nayuki-qr-code-generator@1.8.0",
+      "assignment": 26,
+      "matrixSha256": "41228f27c1c24790df64e77c45d92c9a4063024365f313acdd20798bd0fd845f",
+      "cppMatrixIdentical": true,
+      "decodedBytesHex": "636166c3a9f09f9982e6bca2e5ad97",
+      "plainIdentifier": "]Q1",
+      "eciIdentifierProperty": "]Q1",
+      "eciText": "]Q2\\000026café🙂漢字"
+    },
+    {
+      "source": "nayuki-qr-code-generator@1.8.0",
+      "assignment": 170,
+      "matrixSha256": "9129e637c6d3fdd5f2f1a5402fb7b4662442b6bd58df74711a21979d98eee5ca",
+      "cppMatrixIdentical": true,
+      "decodedBytesHex": "4153434949",
+      "plainIdentifier": "]Q1",
+      "eciIdentifierProperty": "]Q1",
+      "eciText": "]Q2\\000026ASCII"
+    }
+  ]
+}

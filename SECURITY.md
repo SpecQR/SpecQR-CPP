@@ -1,0 +1,7 @@
+# Security
+
+不正なUTF-8、option、GS1、Structured Append、resource境界をvalidateします。入力由来の失敗は通常 `specqr::Error` で返します。メモリ不足等の標準ライブラリ例外は別に扱ってください。
+
+QR生成は入力の信用性や送信先URLの安全性を保証しません。GS1は対応AI catalogに限るvalidationです。SA parityは誤り検出用のXORであり認証ではありません。画像decoderやnetworkアクセスはlibraryに含まれません。
+
+脆弱性はGitHubのprivate vulnerability reportingが利用可能ならそちらへ報告してください。利用できない場合はcredentialや実ユーザーpayloadを含めず、最小の合成入力と影響範囲をmaintainerに知らせてください。修正は既存の安全契約と回帰テストを維持して検証します。

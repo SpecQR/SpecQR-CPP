@@ -1,0 +1,9 @@
+{
+  "name": "specqr-cpp-development-oracles",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Optional test-only independent QR oracle; never a SpecQR C++ runtime dependency",
+  "devDependencies": {
+    "nayuki-qr-code-generator": "1.8.0"
+  }
+}
