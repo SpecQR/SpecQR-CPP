@@ -319,7 +319,7 @@ std::string percent_encode(std::string_view text, bool form) {
 }
 std::string encode_url_part(std::string_view text, bool query) {
     std::string out;
-    const std::string_view forbidden = query ? "\"#'<>" : "\"#<>?`{}";
+    const std::string_view forbidden = query ? "\"#'<>" : "\"#<>?`{}^";
     for (char ch : text) {
         const auto c = static_cast<unsigned char>(ch);
         if (c <= 32 || c > 126 || forbidden.find(static_cast<char>(c)) != std::string_view::npos) append_escape(out, c);

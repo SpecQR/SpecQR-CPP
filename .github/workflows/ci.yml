@@ -100,6 +100,10 @@ jobs:
         run: python tools/verify-decode.py --adapter build/specqr-conformance --decoder cpp --dependency-dir .tools/zxing-cpp
       - name: ZXing Java strict detection and correction
         run: python tools/verify-decode.py --adapter build/specqr-conformance --decoder java --dependency-dir .tools/zxing-java
+      - name: Preserve all original FNC1 payload vectors
+        run: python tools/url-serialization/verify_fnc1.py --dependency-dir .tools/zxing-cpp --adapter build/specqr-conformance
+      - name: Exact current TS URL serialization contracts
+        run: python tools/url-serialization/verify.py
       - name: Retain conformance and decoder evidence
         if: always()
         uses: actions/upload-artifact@v4

@@ -92,3 +92,7 @@ STL だけで挙動を固定するため、一般的なブラウザの WHATWG UR
 - 追加で 2,000 回の決定的な要素列 / Digital Link / チェックディジット property 試験、1,000 組の任意バイト入力、8 スレッドで合計 800 回の並行処理、最大要素数、UTF-8 と percent encoding の境界、リテラル `%` と dot 値を検証します。
 
 fixture 生成器は開発専用です。Python と、C# リポジトリにある `gs1-upstream.json` を明示的に与えた場合だけ使用します。通常の CMake ビルドとテストには Python も JSON パーサも必要ありません。
+
+## URL serialization compatibility (2026-10-05)
+
+prefix path の caret `^` を `%5E` に変換し、既存の percent escape と query encoding は維持します。 限定した URL 出力互換性の拡張であり、通常の QR 符号化・公開 API・runtime dependency は変更しません。既存の dot 値・NUL・IDNA・診断方針を保持します。[固定 corpus と再現手順](../tools/url-serialization/README.md) を参照してください。
