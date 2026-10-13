@@ -1,6 +1,6 @@
 # リソース上限と安全性の契約
 
-SpecQR uses bounded inputs, strict UTF-8 and checked geometry. Allocation failures remain standard C++ exceptions; the library does not promise a fixed peak memory budget.
+SpecQR は入力上限、厳格な UTF-8 検証、geometry の検査を用います。メモリ確保の失敗は C++ の標準例外として扱い、ライブラリは固定されたピークメモリ量を保証しません。
 
 ## 入力と容量は別の制約
 
@@ -41,7 +41,7 @@ PNG は組み込みの非圧縮 DEFLATE、Adler-32、CRC-32 で出力します�
 
 `Segment` の移動元は空の Byte セグメントにリセットされ、文字数と実データの一致を維持します。`QRCode` の移動元の内容は未規定です。再代入や破棄ができ、`QRCode::module()` は実際の格納行列を検査するため、移動後の空の格納領域を範囲外参照しません。移動元の計画情報と行列の一致には依存しないでください。
 
-入力の検証エラーには `specqr::Error`（`std::invalid_argument` 派生）と安定した `code()` を使用します。通常のシンボル生成における `DATA_TOO_LONG` は必要ビット数・容量・評価バージョンも返します。高水準Structured Appendの分割失敗には単一シンボルの容量情報がない場合があります。メモリ確保失敗を別の意味の入力エラーへ置き換えず、`std::bad_alloc` などの標準例外は呼び出し元へ伝播します。出力ストリームへの書き込み失敗は `std::ios_base::failure` です。上限内の入力でも実行環境の空きメモリや出力先によって成功しない場合があります。
+入力の検証エラーには `specqr::Error`（`std::invalid_argument` 派生）と安定した `code()` を使用します。通常のシンボル生成における `DATA_TOO_LONG` は必要ビット数・容量・評価バージョンも返します。高水準 Structured Append の分割失敗には単一シンボルの容量情報がない場合があります。メモリ確保失敗を別の意味の入力エラーへ置き換えず、`std::bad_alloc` などの標準例外は呼び出し元へ伝播します。出力ストリームへの書き込み失敗は `std::ios_base::failure` です。上限内の入力でも実行環境の空きメモリや出力先によって成功しない場合があります。
 
 ## Kanji 対応表の再生成
 

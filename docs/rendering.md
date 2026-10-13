@@ -1,6 +1,6 @@
 # 描画とスキャン診断
 
-SpecQR renders SVG, RGBA and PNG using only the C++17 standard library. Diagnostics provide scanning advice, not a scanner guarantee.
+SpecQR は C++17 標準ライブラリだけで SVG、RGBA、PNG を描画します。診断はスキャンの助言を提供し、スキャナーでの読み取りを保証しません。
 
 `<specqr/render.hpp>` は SVG、RGBA8、PNG、data URL とアプリケーション用描画アダプターを提供します。PNG のチャンク、CRC-32、Adler-32、zlib ヘッダー、非圧縮 DEFLATE ブロックはライブラリ内で実装しており、libpng・zlib・OS の画像 API は必要ありません。非圧縮方式のため、一般的な圧縮 PNG よりファイルは大きくなります。
 

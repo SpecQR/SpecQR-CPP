@@ -1,6 +1,6 @@
 # GS1 / Digital Link
 
-SpecQR-CPP provides a bounded, dependency-free GS1 toolkit. It validates 50 concrete AIs and preserves literal data through deterministic HTTP(S) Digital Link handling with strict payload validation; it does not claim full GS1 or IDNA/WHATWG URL conformance.
+SpecQR-CPP は、対応範囲を限定した、外部依存のない GS1 ツールキットです。具体的な 50 種の AI を検証し、厳格な payload 検証と決定的な HTTP(S) Digital Link 処理によってリテラルデータを保持します。GS1 全体や IDNA/WHATWG URL への完全な準拠は主張しません。
 
 `<specqr/gs1.hpp>` の `specqr::gs1` 名前空間には、AI カタログ、チェックディジット、要素列、Digital Link の生成・解析・検証があります。外部ライブラリ、OS の URL API、ネットワークアクセスは使いません。
 

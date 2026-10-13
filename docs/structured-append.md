@@ -1,6 +1,6 @@
 # Structured Append
 
-SpecQR splits text, raw bytes or manual segments into 2–16 QR symbols and validates complete decoded sets. It does not decode images.
+SpecQR はテキスト、raw bytes、手動セグメントを 2–16 個の QR シンボルへ分割し、デコードされた完全なセットを検証します。画像のデコードは行いません。
 
 `<specqr/structured_append.hpp>` は、共通パリティを持つ複数シンボルの生成と、デコーダーから受け取ったパーツの検証・結合を提供します。高水準 API は指定バージョン範囲のうち分割できる最小バージョンを選び、各パーツを入る限り大きく取ります。全シンボルのバージョンと誤り訂正レベルは共通です。
 
